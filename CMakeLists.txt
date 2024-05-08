@@ -3,7 +3,10 @@ project(wavelet_forest)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(wavelet_forest main.cpp random_file_generator.cpp)
+add_executable(wavelet_forest main.cpp)
+add_executable(random_file_generator randomFileGenerator.cpp)
+add_executable(wavelet_engine wavelet_engine.cpp)
+
 
 include(FetchContent)
 
@@ -13,10 +16,13 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/simongog/sdsl-lite
 )
 FetchContent_GetProperties(sdsl)
+
 if(NOT sdsl_POPULATED)
     FetchContent_Populate(sdsl)
     set(GENERATE_DOC OFF CACHE BOOL "Do not generate doxygen for sdsl-lite")
     add_subdirectory(${sdsl_SOURCE_DIR} ${sdsl_BINARY_DIR} EXCLUDE_FROM_ALL)
+    target_include_directories(wavelet_forest PRIVATE ${sdsl_SOURCE_DIR}/include)
+    target_include_directories(wavelet_engine PRIVATE ${sdsl_SOURCE_DIR}/include)
 endif()
 
 # divsuffsort
@@ -45,7 +51,8 @@ FetchContent_Declare(
 FetchContent_GetProperties(malloc_count)
 if(NOT malloc_count_POPULATED)
     FetchContent_Populate(malloc_count)
-    add_library(malloc_count OBJECT ${malloc_count_SOURCE_DIR}/malloc_count.c ${malloc_count_SOURCE_DIR}/malloc_count.h)
+    add_library(malloc_count OBJECT ${malloc_count_SOURCE_DIR}/malloc_count.c ${malloc_count_SOURCE_DIR}/malloc_count.h
+    )
     target_include_directories(malloc_count PUBLIC "${malloc_count_SOURCE_DIR}")
     target_link_libraries(malloc_count dl)
 endif()
@@ -104,4 +111,6 @@ endif()
 
 
 target_include_directories(wavelet_forest PRIVATE  ${cli11_SOURCE_DIR}/include)
+target_link_libraries(wavelet_engine PRIVATE malloc_count sdsl divsufsort divsufsort64)
 target_link_libraries(wavelet_forest PRIVATE malloc_count sdsl divsufsort divsufsort64)
+target_link_libraries(random_file_generator PRIVATE malloc_count sdsl divsufsort divsufsort64)

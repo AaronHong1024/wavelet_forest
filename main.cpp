@@ -3,7 +3,6 @@
 #include <sdsl/bit_vectors.hpp>
 #include <sdsl/wt_huff.hpp>
 #include <sdsl/wavelet_trees.hpp>
-#include "faster-minuter/include/wt_fbb.hpp"
 #include <random>
 #include <vector>
 
