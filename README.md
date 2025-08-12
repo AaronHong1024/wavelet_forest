@@ -24,8 +24,8 @@ In our experiments, Wavelet Forests achieved **up to 2.5× speedup** over standa
 
 1. **Build** the project (requires `g++` and `sdsl-lite` installed).
 2. **Run**:
-  1. First, generate the random input file (8 MB).
-  2. Then, run the wavelet forest test program.
+   - First, generate the random input file (8 MB).
+   - Then, run the wavelet forest test program.
 3. **Compare** performance metrics for Wavelet Matrix vs. Wavelet Forest.
 
 Example build:
