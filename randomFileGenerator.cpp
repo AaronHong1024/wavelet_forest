@@ -16,7 +16,7 @@ int main() {
     }
 
     // Use SDSL's function to store the bit_vector to a file
-    sdsl::store_to_file(intVector, "/Users/yuhong/CLionProjects/wavelet_forest/random_data.bin");
+    sdsl::store_to_file(intVector, "path to the output file");
 
     std::cout << "Data has been stored using SDSL's store_to_file." << std::endl;
 
