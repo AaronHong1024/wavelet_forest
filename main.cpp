@@ -22,8 +22,8 @@ std::vector<size_t> getRandomNUmbers(size_t size){
 
 
 int main() {
-    std::string wt_file = "/Users/yuhong/CLionProjects/wavelet_forest/wt_huff_8G_oct.sdsl";
-    std::string forest_file = "/Users/yuhong/CLionProjects/wavelet_forest/forest_huff_8G_hex_forest.sdsl";
+    std::string wt_file = "path to the wavelet matrix file";
+    std::string forest_file = "path to the wavelet forest file";
     size_t block_size = 10000000; // approximate 10MB
 
 
