@@ -23,7 +23,7 @@ int main(){
     }
 
     //Save the wavelet tree to disk
-    std::string wt_file = "/Users/yuhong/CLionProjects/wavelet_forest/wt_huff.sdsl";
+    std::string wt_file = "path to the wavelet tree";
     sdsl::store_to_file(wt, wt_file);
 
     //construct the wavelet forest
@@ -53,6 +53,6 @@ int main(){
     }
 
     //Save the wavelet forest to disk
-    sdsl::store_to_file(forest, "/Users/yuhong/CLionProjects/wavelet_forest/forest_huff.sdsl");
+    sdsl::store_to_file(forest, "path to the wavelet forest");
 
 }
